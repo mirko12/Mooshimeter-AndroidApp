@@ -110,4 +110,14 @@ public class MeterReading {
         }
         return rval;
     }
+    public static MeterReading ohmUI(MeterReading m0, MeterReading m1) {//for Ω UI method
+        float res=1e9f;
+        if (m0.value!=0) {res=(m1.value-m0.value*.09029f)//shunt + fuse + wire
+            /m0.value;}
+        return new MeterReading(res ,
+            (m0.n_digits+m1.n_digits)/2,
+            Math.abs(res*2),
+            "Ω"
+        );
+    }
 }
